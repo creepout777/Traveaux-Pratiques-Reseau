@@ -1,0 +1,88 @@
+=================Ex1> Questions generales
+
+1> A partir de l'adresse hote
+
+Calcul à partir de l'adresse hote 10.10.23.67/21
+
+Adresse réseau : 10.10.16.0
+
+Masque décimal : 255.255.248.0 (/21)
+
+Adresse broadcast : 10.10.23.255
+
+Première adresse hote : 10.10.16.1
+
+Dernière adresse hote : 10.10.23.254
+
+Nombre d’hôtes utilisables : 2^(32−21) − 2 = 2046 hotes
+
+2> Plan VLSM pour les sous-réseaux
+
+Département A : 300 hotes
+
+Département B : 120 hotes
+
+Département C : 60 hotes
+
+Département D : 30 hotes
+
+Réseau Guest : 14 hôtes
+
+Réseau Management : 6 hôtes
+
+Méthode : CIDR = 32 − ln(nombre_hotes + 2)/ln(2)
+
+3> Sousreseaux alloues
+
+Département A	10.10.16.0	/23	255.255.254.0	10.10.16.1 – 10.10.17.254	10.10.17.255	510
+Département B	10.10.18.0	/25	255.255.255.128	10.10.18.1 – 10.10.18.126	10.10.18.127	126
+Département C	10.10.18.128	/26	255.255.255.192	10.10.18.129 – 10.10.18.190	10.10.18.191	62
+Département D	10.10.18.192	/27	255.255.255.224	10.10.18.193 – 10.10.18.222	10.10.18.223	30
+Guest	        10.10.18.224	/28	255.255.255.240	10.10.18.225 – 10.10.18.238	10.10.18.239	14
+Management	10.10.18.240	/29	255.255.255.248	10.10.18.241 – 10.10.18.246	10.10.18.247	6
+
+Adresses inutilisées : 10.10.18.248 – 10.10.23.254
+
+==============================Ex3> Questions d’analyse
+
+1>Méthode utilisée
+
+Sous-réseaux triés du plus grand au plus petit
+
+Calcul du CIDR selon 32 − ln(nombre_hotes + 2)/ln(2)
+
+Choix du plus petit masque possible pour réduire les adresses gaspillées
+
+2>Calcul détaillé du plus grand sous-réseau (Département A)
+
+Hotes requis : 300
+
+Adresses totales = 300 + 2 = 302
+
+log2(302) ≈ 8,23 => arrondi à 9 bits
+
+CIDR = 32 − 9 = /23
+
+Masque : 255.255.254.0
+
+Hôtes utilisables : 2^9 − 2 = 510
+
+Réseau : 10.10.16.0/23
+
+3> Plan tient-il dans le /21 initial ?
+
+/21 = 2046 hôtes
+
+Total hôtes alloués ≈ 748 => oui, largement suffisant
+
+4> Comportement ping inter-sous-réseaux sans routage
+
+Machines de sous-réseaux différents => pas de communication
+
+Trames bloquées au niveau du switch (aucune route pour inter-réseau)
+
+5> Solutions pour communication inter-sous-réseaux
+
+Activer un routeur ou un switch L3 avec IP de passerelle
+
+Configurer un router-on-a-stick avec sous-interfaces VLAN et routage activé
