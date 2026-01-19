@@ -1,0 +1,68 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{adjustbox}
+
+% Define colors
+\definecolor{headergreen}{HTML}{228B22}
+\definecolor{lightgreen}{HTML}{E8F5E9}
+
+\begin{document}
+
+\section*{Plan d’adressage du réseau 10.15.0.0/16}
+
+\begin{center}
+\begin{adjustbox}{max width=\textwidth}
+\renewcommand{\arraystretch}{1.2}
+\arrayrulecolor{black}
+\begin{tabular}{
+|>{\bfseries}l
+|>{\centering\arraybackslash}p{1.3cm}
+|>{\centering\arraybackslash}p{1.8cm}
+|>{\centering\arraybackslash}p{2cm}
+|>{\centering\arraybackslash}p{1.8cm}
+|>{\centering\arraybackslash}p{2.5cm}
+|>{\centering\arraybackslash}p{2.5cm}
+|>{\centering\arraybackslash}p{3.3cm}|}
+\hline
+\rowcolor{headergreen!80!black}
+\color{white}{Site} &
+\color{white}{Needed} &
+\color{white}{Prefix} &
+\color{white}{Total} &
+\color{white}{Usable} &
+\color{white}{Network} &
+\color{white}{Broadcast} &
+\color{white}{Usable range} \\
+\hline
+\rowcolor{lightgreen}
+EIDIA & 300 & /23 & 512 & 510 & 10.15.0.0 & 10.15.1.255 & 10.15.0.1 – 10.15.1.254 \\
+\hline
+AD    & 100 & /25 & 128 & 126 & 10.15.2.0 & 10.15.2.127 & 10.15.2.1 – 10.15.2.126 \\
+\hline
+\rowcolor{lightgreen}
+MED   & 20  & /27 & 32  & 30  & 10.15.2.128 & 10.15.2.159 & 10.15.2.129 – 10.15.2.158 \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+CIDR = 32 - [ln (nbr_machines + 2)]/ln(2)

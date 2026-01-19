@@ -1,0 +1,67 @@
+				(TP2)
+1) Adresse ip : 10.0.0.0/16
+
+- il faut trouver le nouveau Masque, combien de bits fault il ajouter au masque pour obtenir au moin 8 sous reseaux.
+		2^(n) >= 8
+		2^(3) >= 8
+
+- Nouveau Masque : 11111111.11111111.[111]000000.00000000   <==> /19
+
+- Nombre de hautes : 2^(32 - 19) - 2 = 2^(13)  - 2  = 8190 par sous reseau
+
+- 256 - 224 =  32 est le nombre de pas entre chaque sous-reseau
+
+
+10.0.0.0
+10.0.32.0
+10.0.64.0
+10.0.96.0
+10.0.128.0
+10.0.160.0
+10.0.192.0
+10.0.224.0
+
+________________________________________________________________________________________________
+
+2)  Adresse ip : 172.16.5.0/24
+- 2^(n) >= 16
+  2^(4) >= 16   alors le nombre de bits a ajouter est 4
+
+- Nouveau masque : 11111111.11111111.11111111.11110000     <==> /28
+
+- nombre de hautes : 2^(32 - 28) - 2  =  2^(4) - 2 = 14 par sous reseau
+
+- 256 - 240 = 16 est le nombre de pas entre chaque sous-reseau
+
+172.16.5.0
+172.16.5.16
+172.16.5.32
+172.16.5.48
+172.16.5.64
+172.16.5.80
+172.16.5.96
+172.16.5.112
+172.16.5.128
+172.16.5.144
+172.16.5.160
+172.16.5.176
+172.16.5.192
+172.16.5.208
+172.16.5.224
+172.16.5.240
+________________________________________________________________________________________________
+
+3)  Adresse ip : 192.168.0.1/24
+
+- 2^(n) >= 2
+  2^(1) >= 2   alors le nombre de bits a ajouter est 1
+
+-Nouveau masque : 11111111.11111111.11111111.10000000    <==>  /25
+
+
+- Nombre de hautes : 2^(32 - 25) - 2  = 2^(7) - 2 = 126 par sous reseau
+
+- 256 - 128 = 128 est le nombre de pas entre chaque sous-reseau
+
+192.168.1.0
+192.168.1.128

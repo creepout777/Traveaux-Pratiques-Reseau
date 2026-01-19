@@ -1,0 +1,35 @@
+				(TP3)
+
+Exercice 1> 10.25.30.5/15  -> 8 sous-reseaux
+
+- 2^(n) => 8, alors n = 3,
+	Donc le masque doit avoir 3 bits de plus.
+	11111111.1111111[1.11]000000.00000000 <==> 255.255.192.0
+
+- Nombre d'hotes : 2^(32 - 18)  - 2 = 16382
+
+- [265 - 192 = 64] alors on va avoir 64 pas entre chaque sous-reseau.
+	10.25.0.0
+	10.25.64.0
+	10.25.128.0
+	10.25.192.0
+	10.26.0.0
+	10.26.4.0
+	10.26.8.0
+	10.26.12.0
+
+------------------------------------------------------------------------
+
+Exercice 2> 181.160.10.18/20 -> 4 sous-reseaux
+
+- 2^(n) => 4, alors n = 2
+	Donc le masque doit avoir 2 bits de plus.
+	11111111.11111111.11111100.00000000 <==> 252
+
+- Nombre d'hotes : 2^(32 - 22) - 2 = 1022
+
+- [256 - 252 = 5] alors on va avoir 4 pas entre chaque sous-reseau.
+	181.160.0.0
+	181.160.4.0
+	181.160.8.0
+	181.160.12.0
